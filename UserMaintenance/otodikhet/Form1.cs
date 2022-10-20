@@ -17,11 +17,12 @@ namespace otodikhet
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
             RefreshData();
-
+            Add();
         }
 
         private void RefreshData()
@@ -38,7 +39,7 @@ namespace otodikhet
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = comboBox1.SelectedItem.ToString(),
+                currencyNames = "EUR",
                 startDate = dateTimePicker1.Value.ToString(),
                 endDate = dateTimePicker2.Value.ToString()
             };
@@ -104,6 +105,16 @@ namespace otodikhet
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+        public void Add()
+        {
+            List<Currency> list = new List<Currency>();
+            list.Add(new Currency() { CurrencyA = "EUR" });
+            list.Add(new Currency() { CurrencyA = "HUF" });
+            list.Add(new Currency() { CurrencyA = "USD" });
+
+            comboBox1.DataSource = Currencies;
+
         }
     }   
 }
