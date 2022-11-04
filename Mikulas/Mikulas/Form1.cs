@@ -21,7 +21,9 @@ namespace Mikulas
         public IToyFactory Factory
         {
             get { return _factory; }
-            set { _factory = value; }
+            set { _factory = value;
+                DisplayNext();
+            }
         }
 
         public Form1()
@@ -67,7 +69,7 @@ namespace Mikulas
             
                 Factory = new BallFactory
                 {
-                    BallColor = button2.BackColor
+                    BallColor = button3.BackColor
                 };
             
         }

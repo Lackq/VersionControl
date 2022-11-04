@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mikulas.Entities
 {
-    internal class Car : Toy
+    public class Car : Toy
     {
         protected override void DrawImage(Graphics g)
         {
