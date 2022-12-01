@@ -12,7 +12,7 @@ namespace kilencedik_ge7izt.Entities
         public int NbrOfChildren { get; set; }
         public bool IsAlive { get; set; }
 
-        public Person()
+        public BirthProbability()
         {
             IsAlive = true;
         }

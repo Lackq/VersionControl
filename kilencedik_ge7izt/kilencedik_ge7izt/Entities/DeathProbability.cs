@@ -12,7 +12,7 @@ namespace kilencedik_ge7izt.Entities
         public Gender Gender { get; set; }
         public bool IsAlive { get; set; }
 
-        public Person()
+        public DeathProbability()
         {
             IsAlive = true;
         }
