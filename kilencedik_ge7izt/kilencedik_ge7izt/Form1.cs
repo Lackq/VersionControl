@@ -20,30 +20,31 @@ namespace kilencedik_ge7izt
         public Form1()
         {
             InitializeComponent();
+
+            Population = GetPopulation(@"C:\Temp\nép.csv");
+            //BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
+            //DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
         }
 
-        public void olvas()
+        public List<Person> GetPopulation(string csvpath)
         {
-            List<Person> GetPopulation(string csvpath)
+            List<Person> population = new List<Person>();
+
+            using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
             {
-                List<Person> population = new List<Person>();
-
-                using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
+                while (!sr.EndOfStream)
                 {
-                    while (!sr.EndOfStream)
+                    var line = sr.ReadLine().Split(';');
+                    population.Add(new Person()
                     {
-                        var line = sr.ReadLine().Split(';');
-                        population.Add(new Person()
-                        {
-                            BirthYear = int.Parse(line[0]),
-                            Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
-                            NbrOfChildren = int.Parse(line[2])
-                        });
-                    }
+                        BirthYear = int.Parse(line[0]),
+                        Gender = (Gender)Enum.Parse(typeof(Gender), line[1]),
+                        NbrOfChildren = int.Parse(line[2])
+                    });
                 }
-
-                return population;
             }
+
+            return population;
         }
     }
 }
